@@ -47,14 +47,22 @@
  */
 
 class KthLargest {
+    private var k: Int
+    private var nums: [Int]
 
     init(_ k: Int, _ nums: [Int]) {
-        // TODO: 在这里写你的解答
+        self.k = k
+        self.nums = nums
     }
 
     func add(_ val: Int) -> Int {
-        // TODO: 在这里写你的解答
-        return 0
+        nums.append(val)
+        let buffer = nums.sorted(by: >)
+        if k > buffer.count {
+          return -1
+        } else {
+          return buffer[0..<k].last ?? -1
+        }                
     }
 }
 
